@@ -1,0 +1,297 @@
+/* ===== Reset global ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* ===== Variables de color ===== */
+  --primary-color: #4a90e2; /* Header, menú, botones principales */
+  --secondary-color: #f5f5f5; /* Fondo general */
+  --text-color: #333; /* Texto principal */
+  --bg-color-dark: #2e2e2e; /* Fondo modo oscuro */
+  --text-color-dark: #f0f0f0; /* Texto modo oscuro */
+  --header-bg-dark: #1f1f1f; /* Header modo oscuro */
+  --button-color: #e94e77; /* Botón Modo de Lucha */
+  --button-hover: #d43d63; /* Hover botón Modo de Lucha */
+  --button-success: #28a745; /* Botón Buscar Suerte */
+  --button-success-hover: #218838; /* Hover Buscar Suerte */
+  --button-info: #17a2b8; /* Botón Limpiar resultados */
+  --button-info-hover: #138496; /* Hover Limpiar resultados */
+  --menu-bg: var(--primary-color); /* Fondo menú */
+  --menu-link-color: #ffffff; /* Texto menú */
+  --menu-link-hover: rgba(255, 255, 255, 0.1); /* Hover menú */
+  --menu-link-border: rgba(255, 255, 255, 0.2); /* Separador menú */
+  --menu-link-border-dark: #444; /* Separador menú oscuro */
+  --menu-bg-dark: #222; /* Fondo menú oscuro */
+  --menu-link-hover-dark: #333; /* Hover menú oscuro */
+  --menu-border-radius: 0.3rem;
+  --menu-shadow: rgba(0, 0, 0, 0.1);
+  --menu-width: 160px;
+  --menu-max-height: 240px;
+  --menu-transition: 0.3s ease-out;
+  --footer-bg: #ddd; /* Fondo footer */
+  --footer-bg-dark: var(--header-bg-dark);
+  --footer-text-dark: var(--text-color-dark);
+  --table-border: #ccc; /* Bordes tabla */
+  --table-header-bg: var(--primary-color);
+  --table-header-text: #fff;
+  --input-border: #ccc;
+}
+
+/* ===== Body y modo oscuro ===== */
+body {
+  font-family: Arial, sans-serif;
+  background: var(--secondary-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  text-transform: none;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+body.dark {
+  background-color: var(--bg-color-dark);
+  color: var(--text-color-dark);
+}
+
+body.dark header,
+body.dark #menu-container {
+  background-color: var(--header-bg-dark);
+}
+
+body.dark #menu {
+  background: var(--menu-bg-dark);
+}
+
+body.dark #menu a {
+  color: var(--menu-link-color);
+  border-bottom: 1px solid var(--menu-link-border-dark);
+}
+
+body.dark #menu a:hover {
+  background: var(--menu-link-hover-dark);
+}
+
+body.dark footer {
+  background-color: var(--footer-bg-dark);
+  color: var(--footer-text-dark);
+}
+
+/* ===== Header ===== */
+header {
+  background: var(--primary-color);
+  color: #fff;
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+  position: relative;
+}
+
+/* ===== Menú ===== */
+#menu-container {
+  position: relative;
+  background: var(--primary-color);
+  width: 100%;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+#menu-toggle {
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #fff;
+  margin-left: 1rem;
+}
+#menu {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--menu-bg);
+  border: 1px solid var(--table-border);
+  z-index: 1000;
+  width: 110px;
+  border-radius: var(--menu-border-radius);
+  margin-left: 5px;
+}
+#menu.open {
+  max-height: var(--menu-max-height);
+}
+#menu a {
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  color: var(--menu-link-color);
+  border-bottom: 1px solid var(--menu-link-border);
+  transition: background 0.2s;
+}
+#menu a:last-child {
+  border-bottom: none;
+}
+#menu a:hover {
+  background: var(--menu-link-hover);
+}
+
+/* ===== Botón de modo oscuro ===== */
+#dark-mode-toggle {
+  margin-left: auto;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ===== Main y controles ===== */
+main {
+  flex: 1;
+  width: 90%;
+  max-width: 1000px;
+  margin: 2rem auto;
+}
+
+.controls {
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.controls input[type="text"],
+.controls input[type="number"] {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid var(--input-border);
+  border-radius: 0.3rem;
+}
+
+.controls button {
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 0.3rem;
+  transition: background 0.2s;
+}
+
+/* Botones específicos */
+#mode-fighting {
+  background: var(--button-color);
+  color: #fff;
+}
+#mode-fighting:hover {
+  background: var(--button-hover);
+}
+#search-luck {
+  background: var(--button-success);
+  color: #fff;
+}
+#search-luck:hover {
+  background: var(--button-success-hover);
+}
+#clear-results {
+  background: var(--button-info);
+  color: #fff;
+}
+#clear-results:hover {
+  background: var(--button-info-hover);
+}
+
+/* ===== Mensajes ===== */
+.message {
+  color: red;
+  margin-top: 1rem;
+  display: none;
+}
+
+/* ===== Tabla ===== */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 2rem;
+}
+.table-container table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th,
+td {
+  border: 1px solid var(--table-border);
+  padding: 0.5rem;
+  text-align: center;
+}
+th {
+  background-color: var(--table-header-bg);
+  color: var(--table-header-text);
+}
+
+/* ===== Footer ===== */
+footer {
+  box-sizing: border-box;
+  width: 100vw;
+  max-width: 100%;
+  padding: 1rem;
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-style: italic;
+  background-color: var(--footer-bg);
+  margin-top: auto;
+  overflow-x: hidden;
+}
+
+#motivational-footer {
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+}
+
+/* ===== Inputs ===== */
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+#record-count,
+#username {
+  flex: 0 0 80px;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid var(--input-border);
+  outline: none;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 475px) {
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  #username,
+  #record-count {
+    flex: 1;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
