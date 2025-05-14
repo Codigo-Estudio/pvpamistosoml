@@ -26,7 +26,3 @@ mi-pagina-web
 
 1. Clona este repositorio en tu máquina local.
 2. Abre el archivo `index.html` en tu navegador para ver la página web en acción.
-
-## Contribución
-
-Si deseas contribuir a este proyecto, siéntete libre de hacer un fork y enviar un pull request con tus mejoras.
