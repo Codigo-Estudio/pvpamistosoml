@@ -134,19 +134,27 @@ function getRandom(arr, n) {
 
 // ===== Validar input de nombre: solo letras y espacios =====
 function validateInput() {
-  const username = document.getElementById("username").value;
-  const valid = /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/.test(username.trim());
+  const username = document.getElementById("username").value.trim();
   const validationMsg = document.getElementById("validation-message");
   const assignMsg = document.getElementById("assign-message");
 
-  if (valid) {
-    validationMsg.style.display = "none"; // Oculta mensaje si válido
-  } else {
-    validationMsg.style.display = "block"; // Muestra error si inválido
-    validationMsg.textContent = messages.fieldType; // Mensaje de error por el campo
-    assignMsg.style.display = "none"; // Oculta otros mensajes
+  if (username.length < 3 || username.length > 50) {
+    validationMsg.style.display = "block";
+    validationMsg.textContent = "El nombre debe tener entre 3 y 50 caracteres.";
+    assignMsg.style.display = "none";
+    return false;
   }
-  return valid;
+
+  const valid = /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/.test(username);
+  if (!valid) {
+    validationMsg.style.display = "block";
+    validationMsg.textContent = "Nombre inválido. Solo letras y espacios.";
+    assignMsg.style.display = "none";
+    return false;
+  }
+
+  validationMsg.style.display = "none";
+  return true;
 }
 
 // ===== Ocultar todos los mensajes de alerta =====
