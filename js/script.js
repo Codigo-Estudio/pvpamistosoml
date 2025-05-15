@@ -138,9 +138,9 @@ function validateInput() {
   const validationMsg = document.getElementById("validation-message");
   const assignMsg = document.getElementById("assign-message");
 
-  if (username.length < 3 || username.length > 50) {
+  if (username.length < 1 || username.length > 10) {
     validationMsg.style.display = "block";
-    validationMsg.textContent = "El nombre debe tener entre 3 y 50 caracteres.";
+    validationMsg.textContent = "El nombre debe tener entre 1 y 10 caracteres.";
     assignMsg.style.display = "none";
     return false;
   }
@@ -175,9 +175,7 @@ document.getElementById("mode-fighting").addEventListener("click", () => {
 
   // Validación de nombre antes de asignar
   if (!username || !validateInput()) {
-    const validationMsg = document.getElementById("validation-message");
-    validationMsg.style.display = "block";
-    validationMsg.textContent = messages.invalidName;
+    validateInput();
     return;
   }
 
@@ -213,14 +211,10 @@ document.getElementById("search-luck").addEventListener("click", () => {
 
   // Re-validar nombre antes de generar
   if (!username || !validateInput()) {
-    const validationMsg = document.getElementById("validation-message");
-    validationMsg.style.display = "block";
-    validationMsg.textContent = messages.invalidName;
-    return;
+    validateInput();
   }
-
   // Si no hay opción, muestra alerta
-  if (assignedOptions.length === 0) {
+  else if (assignedOptions.length === 0) {
     const assignMsg = document.getElementById("assign-message");
     assignMsg.style.display = "block";
     assignMsg.textContent = messages.noOption;
@@ -268,13 +262,13 @@ document.getElementById("search-luck").addEventListener("click", () => {
         <td>${items[2] || ""}</td>
       `;
     document.querySelector("#result-table tbody").appendChild(row);
+    // Limpia campos para el siguiente usuario
+    document.getElementById("username").value = "";
+    // Limpiar el campo de registros
+    document.getElementById("record-count").value = "";
+    // Limpiar las opciones asignadas al finalizar
+    assignedOptions = [];
   }
-
-  // Limpia campos para el siguiente usuario
-  document.getElementById("username").value = "";
-  // Limpiar el campo de registros
-  document.getElementById("record-count").value = "";
-  assignedOptions = []; // Limpiar las opciones asignadas al finalizar
 });
 
 // ===== Limpiar la tabla de resultados =====
