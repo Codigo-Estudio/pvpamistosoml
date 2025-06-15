@@ -26,3 +26,4 @@ mi-pagina-web
 
 1. Clona este repositorio en tu máquina local.
 2. Abre el archivo `index.html` en tu navegador para ver la página web en acción.
+3. Se podra abrir en la página tanto desde un dispositivo movil como en un pc.
