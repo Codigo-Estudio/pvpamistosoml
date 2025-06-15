@@ -134,27 +134,19 @@ function getRandom(arr, n) {
 
 // ===== Validar input de nombre: solo letras y espacios =====
 function validateInput() {
-  const username = document.getElementById("username").value.trim();
+  const username = document.getElementById("username").value;
+  const valid = /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/.test(username.trim());
   const validationMsg = document.getElementById("validation-message");
   const assignMsg = document.getElementById("assign-message");
 
-  if (username.length < 1 || username.length > 10) {
-    validationMsg.style.display = "block";
-    validationMsg.textContent = "El nombre debe tener entre 1 y 10 caracteres.";
-    assignMsg.style.display = "none";
-    return false;
+  if (valid) {
+    validationMsg.style.display = "none"; // Oculta mensaje si válido
+  } else {
+    validationMsg.style.display = "block"; // Muestra error si inválido
+    validationMsg.textContent = messages.fieldType; // Mensaje de error por el campo
+    assignMsg.style.display = "none"; // Oculta otros mensajes
   }
-
-  const valid = /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/.test(username);
-  if (!valid) {
-    validationMsg.style.display = "block";
-    validationMsg.textContent = "Nombre inválido. Solo letras y espacios.";
-    assignMsg.style.display = "none";
-    return false;
-  }
-
-  validationMsg.style.display = "none";
-  return true;
+  return valid;
 }
 
 // ===== Ocultar todos los mensajes de alerta =====
@@ -175,7 +167,9 @@ document.getElementById("mode-fighting").addEventListener("click", () => {
 
   // Validación de nombre antes de asignar
   if (!username || !validateInput()) {
-    validateInput();
+    const validationMsg = document.getElementById("validation-message");
+    validationMsg.style.display = "block";
+    validationMsg.textContent = messages.invalidName;
     return;
   }
 
@@ -211,10 +205,14 @@ document.getElementById("search-luck").addEventListener("click", () => {
 
   // Re-validar nombre antes de generar
   if (!username || !validateInput()) {
-    validateInput();
+    const validationMsg = document.getElementById("validation-message");
+    validationMsg.style.display = "block";
+    validationMsg.textContent = messages.invalidName;
+    return;
   }
+
   // Si no hay opción, muestra alerta
-  else if (assignedOptions.length === 0) {
+  if (assignedOptions.length === 0) {
     const assignMsg = document.getElementById("assign-message");
     assignMsg.style.display = "block";
     assignMsg.textContent = messages.noOption;
@@ -262,13 +260,13 @@ document.getElementById("search-luck").addEventListener("click", () => {
         <td>${items[2] || ""}</td>
       `;
     document.querySelector("#result-table tbody").appendChild(row);
-    // Limpia campos para el siguiente usuario
-    document.getElementById("username").value = "";
-    // Limpiar el campo de registros
-    document.getElementById("record-count").value = "";
-    // Limpiar las opciones asignadas al finalizar
-    assignedOptions = [];
   }
+
+  // Limpia campos para el siguiente usuario
+  document.getElementById("username").value = "";
+  // Limpiar el campo de registros
+  document.getElementById("record-count").value = "";
+  assignedOptions = []; // Limpiar las opciones asignadas al finalizar
 });
 
 // ===== Limpiar la tabla de resultados =====
