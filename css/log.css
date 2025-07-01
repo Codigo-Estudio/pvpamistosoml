@@ -1,0 +1,28 @@
+:root {
+  --button-info: #17a2b8; /* Botón Limpiar resultados */
+  --button-info-hover: #138496; /* Hover Limpiar resultados */
+}
+
+.controls {
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+#clear-logs {
+  background: var(--button-info);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#clear-logs:hover {
+  background: var(--button-info-hover);
+}
+#log-list {
+  margin-top: 1.5rem;
+  padding-left: 1.5rem;
+}

@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Random ML</title>
-    <link rel="stylesheet" href="css/estilos.css" />
+    <link rel="stylesheet" href="css/general.css" />
+    <link rel="stylesheet" href="css/index.css" />
   </head>
   <body>
     <!-- ===== Encabezado con título ===== -->
@@ -17,8 +18,8 @@
       <button id="menu-toggle">☰</button>
       <!-- Ícono del menú hamburguesa -->
       <nav id="menu">
-        <a href="#" onclick="navigate('home')">Home</a>
-        <a href="#" onclick="navigate('log')">Log</a>
+        <a href="index.html">Home</a>
+        <a href="log.html">Log</a>
       </nav>
       <button id="dark-mode-toggle" title="Modo oscuro">🌙</button>
       <!-- Botón modo oscuro -->
@@ -42,6 +43,12 @@
         <button id="mode-fighting">Modo de Lucha</button>
         <button id="search-luck">Buscar Suerte</button>
         <button id="clear-results">Limpiar resultados</button>
+        <!-- Select idioma -->
+        <label for="language-select">Idioma:</label>
+        <select id="language-select">
+          <option value="es">Español (España)</option>
+          <option value="lat">Español (Latino)</option>
+        </select>
       </div>
 
       <!-- Mensajes de validación y asignación -->
@@ -66,17 +73,12 @@
       </div>
     </main>
 
-    <!-- ===== Sección Log ===== -->
-    <main id="log" style="display: none">
-      <h2>Registro de actividad</h2>
-      <ul id="log-list"></ul>
-    </main>
-
     <!-- ===== Pie de página ===== -->
     <footer>
       <p id="motivational-footer">Los titanes no nacen... se forjan aquí.</p>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="js/general.js"></script>
+    <script src="js/index.js"></script>
   </body>
 </html>

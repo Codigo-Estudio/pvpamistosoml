@@ -1,0 +1,111 @@
+:root {
+  --button-color: #e94e77; /* Botón Modo de Lucha */
+  --button-hover: #d43d63; /* Hover botón Modo de Lucha */
+  --button-success: #28a745; /* Botón Buscar Suerte */
+  --button-success-hover: #218838; /* Hover Buscar Suerte */
+  --button-info: #17a2b8; /* Botón Limpiar resultados */
+  --button-info-hover: #138496; /* Hover Limpiar resultados */
+  --table-border: #ccc; /* Bordes tabla */
+  --table-header-bg: var(--primary-color); /* Fondo cabecera tabla */
+  --table-header-text: #fff; /* Texto cabecera tabla */
+  --input-border: #ccc; /* Borde de los inputs */
+}
+
+.controls {
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.controls input[type="text"],
+.controls input[type="number"] {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid var(--input-border);
+  border-radius: 0.3rem;
+}
+
+.controls button {
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 0.3rem;
+  transition: background 0.2s;
+}
+
+/* Botones específicos */
+#mode-fighting {
+  background: var(--button-color);
+  color: #fff;
+}
+#mode-fighting:hover {
+  background: var(--button-hover);
+}
+#search-luck {
+  background: var(--button-success);
+  color: #fff;
+}
+#search-luck:hover {
+  background: var(--button-success-hover);
+}
+#clear-results {
+  background: var(--button-info);
+  color: #fff;
+}
+#clear-results:hover {
+  background: var(--button-info-hover);
+}
+
+/* ===== Mensajes ===== */
+.message {
+  color: red;
+  margin-top: 1rem;
+  display: none;
+}
+
+/* ===== Tabla ===== */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 2rem;
+}
+.table-container table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th,
+td {
+  border: 1px solid var(--table-border);
+  padding: 0.5rem;
+  text-align: center;
+}
+th {
+  background-color: var(--table-header-bg);
+  color: var(--table-header-text);
+}
+
+/* ===== Inputs ===== */
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+#record-count,
+#username {
+  flex: 0 0 80px;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid var(--input-border);
+  outline: none;
+  font-size: 15px;
+  font-family: inherit;
+}
