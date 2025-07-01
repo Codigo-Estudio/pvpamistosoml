@@ -164,8 +164,8 @@ const languageOptions = document.querySelectorAll(".language-option");
 
 // Mostrar/ocultar el menú desplegable
 languageToggle.addEventListener("click", () => {
-  languageMenu.style.display =
-    languageMenu.style.display === "none" ? "block" : "none";
+  const isMenuVisible = languageMenu.style.display === "block";
+  languageMenu.style.display = isMenuVisible ? "none" : "block";
 });
 
 // Cambiar idioma al seleccionar una opción
