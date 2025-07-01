@@ -21,8 +21,18 @@
         <a href="index.html">Home</a>
         <a href="log.html">Log</a>
       </nav>
-      <button id="dark-mode-toggle" title="Modo oscuro">🌙</button>
-      <!-- Botón modo oscuro -->
+      <div id="icon-container">
+        <!-- Select idioma -->
+        <div id="language-dropdown">
+          <button id="language-toggle">🌍</button>
+          <div id="language-menu">
+            <div class="language-option" data-lang="es">Español</div>
+            <div class="language-option" data-lang="lat">Latino</div>
+          </div>
+        </div>
+        <!-- Botón modo oscuro -->
+        <button id="dark-mode-toggle" title="Modo oscuro">🌙</button>
+      </div>
     </div>
 
     <!-- ===== Sección Home ===== -->
@@ -39,16 +49,12 @@
           <!-- Campo nombre del usuario -->
           <input type="text" id="username" placeholder="Usuario" />
         </div>
-        <!-- Botones de acción -->
-        <button id="mode-fighting">Modo de Lucha</button>
-        <button id="search-luck">Buscar Suerte</button>
-        <button id="clear-results">Limpiar resultados</button>
-        <!-- Select idioma -->
-        <label for="language-select">Idioma:</label>
-        <select id="language-select">
-          <option value="es">Español (España)</option>
-          <option value="lat">Español (Latino)</option>
-        </select>
+        <div class="button-group">
+          <!-- Botones de acción -->
+          <button id="mode-fighting">Modo de Lucha</button>
+          <button id="search-luck">Buscar Suerte</button>
+          <button id="clear-results">Limpiar resultados</button>
+        </div>
       </div>
 
       <!-- Mensajes de validación y asignación -->

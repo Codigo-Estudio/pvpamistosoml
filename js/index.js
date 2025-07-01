@@ -157,22 +157,31 @@ const elements = [
   "Agua",
 ];
 
-// Selección de idioma
-const languageSelect = document.getElementById("language-select");
-let currentBooks = booksES; // Por defecto
+// Elementos del idioma
+const languageToggle = document.getElementById("language-toggle");
+const languageMenu = document.getElementById("language-menu");
+const languageOptions = document.querySelectorAll(".language-option");
+
+// Mostrar/ocultar el menú desplegable
+languageToggle.addEventListener("click", () => {
+  languageMenu.style.display =
+    languageMenu.style.display === "none" ? "block" : "none";
+});
+
+// Cambiar idioma al seleccionar una opción
+languageOptions.forEach((option) => {
+  option.addEventListener("click", () => {
+    const selectedLang = option.getAttribute("data-lang");
+    currentBooks = selectedLang === "lat" ? booksLAT : booksES;
+    localStorage.setItem("pvpml_language", selectedLang);
+    languageMenu.style.display = "none"; // Ocultar el menú después de seleccionar
+  });
+});
 
 // Cargar preferencia guardada
-if (languageSelect && localStorage.getItem("pvpml_language")) {
-  languageSelect.value = localStorage.getItem("pvpml_language");
-  currentBooks = languageSelect.value === "lat" ? booksLAT : booksES;
-}
-
-// Cambiar idioma al seleccionar
-if (languageSelect) {
-  languageSelect.addEventListener("change", () => {
-    currentBooks = languageSelect.value === "lat" ? booksLAT : booksES;
-    localStorage.setItem("pvpml_language", languageSelect.value);
-  });
+const savedLanguage = localStorage.getItem("pvpml_language");
+if (savedLanguage) {
+  currentBooks = savedLanguage === "lat" ? booksLAT : booksES;
 }
 
 let assignedOptions = [];

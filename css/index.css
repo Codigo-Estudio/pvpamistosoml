@@ -16,6 +16,7 @@
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  overflow-x: hidden;
 }
 
 .controls input[type="text"],
@@ -33,6 +34,7 @@
   cursor: pointer;
   border-radius: 0.3rem;
   transition: background 0.2s;
+  margin-right: 7px;
 }
 
 /* Botones específicos */
@@ -108,4 +110,35 @@ th {
   outline: none;
   font-size: 15px;
   font-family: inherit;
+}
+@media (max-width: 472px) {
+  .input-group {
+    display: flex; /* Alinea los inputs horizontalmente */
+    flex-direction: row;  /*Mantiene disposición horizontal */
+    gap: 10px; /* Espacio entre los inputs */
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+  }
+
+  #record-count {
+    flex: 0 0 40%; /* Ocupa el 40% del ancho del contenedor */
+    width: 40%; /* Ajusta automáticamente el ancho */
+  }
+
+  #username {
+    flex: 0 0 56%; /* Ocupa el 60% del ancho del contenedor */
+    width: 60%; /* Ajusta automáticamente el ancho */
+  }
+}
+@media (max-width: 520px) {
+  .button-group {
+    display: flex; /* Alinea los botones */
+    flex-direction: column; /* Cambia a disposición vertical */
+    gap: 10px; /* Espacio entre los botones */
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    box-sizing: border-box; /* Asegura que el padding y borde no excedan el ancho */
+  }
+
+  .button-group button {
+    width: 100%; /* Cada botón ocupa todo el ancho disponible */
+  }
 }

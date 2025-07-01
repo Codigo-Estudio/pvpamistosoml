@@ -128,7 +128,6 @@ header {
 
 /* ===== Botón de modo oscuro ===== */
 #dark-mode-toggle {
-  margin-left: auto;
   background: none;
   border: none;
   font-size: 1.5rem;
@@ -165,16 +164,43 @@ footer {
   opacity: 1;
 }
 
-/* ===== Responsive ===== */
-@media (max-width: 475px) {
-  .controls {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  #username,
-  #record-count {
-    flex: 1;
-    width: 100%;
-    margin-bottom: 10px;
-  }
+/* ===== Icono Idioma ===== */
+#language-menu {
+  width: max-content;
+  border-radius: 4px;
+  display: none;
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+#language-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+#language-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.language-option {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.language-option:hover {
+  background-color: #f0f0f0;
+}
+
+/* Contenedor de los íconos */
+#icon-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
 }
