@@ -158,7 +158,6 @@ const elements = [
 ];
 
 let assignedOptions = [];
-const logEntries = JSON.parse(localStorage.getItem("pvpml_logs")) || [];
 
 // Cargar resultados previos
 function loadResults() {
@@ -172,15 +171,17 @@ function loadResults() {
     resultTable.appendChild(row);
   });
 }
-if (document.querySelector("#result-table tbody")) {
+
+// Llama a esta función al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
   loadResults();
-}
+});
 
 // Guardar resultados
 function saveResults() {
   const rows = Array.from(document.querySelectorAll("#result-table tbody tr"));
   const results = rows.map((row) =>
-    Array.from(row.children).map((cell) => cell.textContent)
+    Array.from(row.children).map((cell) => cell.innerHTML)
   );
   localStorage.setItem("pvpml_results", JSON.stringify(results));
 }
@@ -238,8 +239,6 @@ if (modeFightingBtn) {
       assignedOptions.push(randomOption);
       const now = new Date().toLocaleString();
       const entry = `${now} - ${username} - Modo de Lucha - ${randomOption}`;
-      logEntries.push(entry);
-      saveLogs();
     }
     const assignMsg = document.getElementById("assign-message");
     if (assignMsg) {
@@ -295,25 +294,26 @@ if (searchLuckBtn) {
           break;
       }
       const now = new Date().toLocaleString();
-      const resultText = items.join(", ");
-      const entry = `${now} - ${username} - Buscar Suerte - ${resultText}`;
-      logEntries.push(entry);
-      saveLogs();
+      const entry = `${now} - ${username} - Buscar Suerte - ${items.join(", ")}`;
       const resultTable = document.querySelector("#result-table tbody");
       if (resultTable) {
         const row = document.createElement("tr");
         const rowCount =
           document.querySelectorAll("#result-table tbody tr").length + 1;
+
         row.innerHTML = `
           <td>${rowCount}</td>
           <td>${username}</td>
           <td>${selectedOption}</td>
-          <td>${items[0] || ""}</td>
-          <td>${items[1] || ""}</td>
-          <td>${items[2] || ""}</td>
+          ${items
+            .map(
+              (item) =>
+                `<td><img src="${getIcon(item)}" alt="${item}" data-tooltip="${item}" style="width: 1.5rem; height: 1.5rem;" /></td>`
+            )
+            .join("")}
         `;
         resultTable.appendChild(row);
-        saveResults();
+        saveResults(); // Guarda los resultados en localStorage
       }
     }
     if (usernameInput) usernameInput.value = "";
@@ -332,7 +332,7 @@ if (clearResultsBtn) {
     if (usernameInput) usernameInput.value = "";
     if (recordCountInput) recordCountInput.value = "";
     if (resultTable) resultTable.innerHTML = "";
-    localStorage.removeItem("pvpml_results");
+    localStorage.removeItem("pvpml_results"); // Elimina los resultados de localStorage
     hideMessages();
     assignedOptions = [];
   });
@@ -342,3 +342,83 @@ if (clearResultsBtn) {
 function getRandom(arr, n) {
   return arr.sort(() => 0.5 - Math.random()).slice(0, n);
 }
+
+// Función para obtener la ruta del ícono correspondiente
+function getIcon(name) {
+  const sanitizedName = name.replace(/\s+/g, "_"); // Reemplaza espacios por guiones bajos
+  return `/img/${sanitizedName}.png`; // Ruta del ícono
+}
+
+// Elementos del idioma
+const languageToggle = document.getElementById("language-toggle");
+const languageMenu = document.getElementById("language-menu");
+const languageOptions = document.querySelectorAll(".language-option");
+
+// Mostrar/ocultar menú del Idioma
+languageToggle.addEventListener("click", (e) => {
+  e.stopPropagation(); // Evita que el clic en el botón cierre el menú
+  const isMenuVisible = languageMenu.style.display === "block";
+  languageMenu.style.display = isMenuVisible ? "none" : "block";
+});
+
+// Cerrar el menú al hacer clic fuera de él
+document.addEventListener("click", (e) => {
+  if (!languageMenu.contains(e.target) && !languageToggle.contains(e.target)) {
+    languageMenu.style.display = "none";
+  }
+});
+
+// Cambiar idioma al seleccionar una opción
+languageOptions.forEach((option) => {
+  option.addEventListener("click", () => {
+    const selectedLang = option.getAttribute("data-lang");
+    currentBooks = selectedLang === "lat" ? booksLAT : booksES;
+    localStorage.setItem("pvpml_language", selectedLang);
+    languageMenu.style.display = "none"; // Ocultar el menú después de seleccionar
+  });
+});
+
+// Cargar preferencia guardada
+const savedLanguage = localStorage.getItem("pvpml_language");
+if (savedLanguage) {
+  currentBooks = savedLanguage === "lat" ? booksLAT : booksES;
+}
+
+document.addEventListener("click", (e) => {
+  const target = e.target;
+  if (target.tagName === "IMG" && target.hasAttribute("data-tooltip")) {
+    const tooltipText = target.getAttribute("data-tooltip");
+
+    // Crear el tooltip
+    const tooltip = document.createElement("div");
+    tooltip.textContent = tooltipText;
+    tooltip.style.position = "absolute";
+    tooltip.style.background = "#333";
+    tooltip.style.color = "#fff";
+    tooltip.style.padding = "5px 10px";
+    tooltip.style.borderRadius = "5px";
+    tooltip.style.fontSize = "0.9rem";
+    tooltip.style.zIndex = "1000";
+    tooltip.style.opacity = "0";
+    tooltip.style.transition = "opacity 0.3s ease";
+    document.body.appendChild(tooltip);
+
+    // Posicionar el tooltip cerca del ícono
+    const rect = target.getBoundingClientRect();
+    tooltip.style.left = `${rect.left + window.scrollX}px`;
+    tooltip.style.top = `${rect.top + window.scrollY - 30}px`;
+
+    // Mostrar el tooltip
+    setTimeout(() => {
+      tooltip.style.opacity = "1";
+    }, 10);
+
+    // Desvanecer y eliminar el tooltip después de unos segundos
+    setTimeout(() => {
+      tooltip.style.opacity = "0";
+      setTimeout(() => {
+        tooltip.remove();
+      }, 300); // Tiempo para que desaparezca completamente
+    }, 2000); // Tiempo que el tooltip permanece visible
+  }
+});

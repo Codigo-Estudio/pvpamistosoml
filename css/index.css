@@ -103,6 +103,15 @@ th {
   font-size: 15px;
   font-family: inherit;
 }
+
+/* ===== Iconos Tabla ===== */
+#result-table img {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: block;
+  margin: auto;
+}
+
 @media (max-width: 472px) {
   .input-group {
     display: flex; /* Alinea los inputs horizontalmente */

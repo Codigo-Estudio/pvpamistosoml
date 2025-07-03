@@ -64,37 +64,3 @@ if (darkToggle) {
     if (menu) menu.classList.remove("open");
   });
 }
-// Elementos del idioma
-const languageToggle = document.getElementById("language-toggle");
-const languageMenu = document.getElementById("language-menu");
-const languageOptions = document.querySelectorAll(".language-option");
-
-// Mostrar/ocultar menú del Idioma
-languageToggle.addEventListener("click", (e) => {
-  e.stopPropagation(); // Evita que el clic en el botón cierre el menú
-  const isMenuVisible = languageMenu.style.display === "block";
-  languageMenu.style.display = isMenuVisible ? "none" : "block";
-});
-
-// Cerrar el menú al hacer clic fuera de él
-document.addEventListener("click", (e) => {
-  if (!languageMenu.contains(e.target) && !languageToggle.contains(e.target)) {
-    languageMenu.style.display = "none";
-  }
-});
-
-// Cambiar idioma al seleccionar una opción
-languageOptions.forEach((option) => {
-  option.addEventListener("click", () => {
-    const selectedLang = option.getAttribute("data-lang");
-    currentBooks = selectedLang === "lat" ? booksLAT : booksES;
-    localStorage.setItem("pvpml_language", selectedLang);
-    languageMenu.style.display = "none"; // Ocultar el menú después de seleccionar
-  });
-});
-
-// Cargar preferencia guardada
-const savedLanguage = localStorage.getItem("pvpml_language");
-if (savedLanguage) {
-  currentBooks = savedLanguage === "lat" ? booksLAT : booksES;
-}
