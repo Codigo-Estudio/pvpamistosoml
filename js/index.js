@@ -308,7 +308,9 @@ if (searchLuckBtn) {
           ${items
             .map(
               (item) =>
-                `<td><img src="${getIcon(item)}" alt="${item}" data-tooltip="${item}"/></td>`
+                `<td>
+                  <img src="${getIcon(item)}" alt="${item}" data-tooltip="${item}"/>
+                </td>`
             )
             .join("")}
         `;
@@ -343,10 +345,17 @@ function getRandom(arr, n) {
   return arr.sort(() => 0.5 - Math.random()).slice(0, n);
 }
 
+// Función para normalizar nombres
+function normalizeName(name) {
+  return name
+    .toLowerCase() // Convierte a minúsculas
+    .replace(/[\s\W]+/g, "_"); // Reemplaza espacios y caracteres no alfanuméricos por guiones bajos
+}
+
 // Función para obtener la ruta del ícono correspondiente
 function getIcon(name) {
-  const sanitizedName = name.replace(/\s+/g, "_"); // Reemplaza espacios por guiones bajos
-  return `/img/${sanitizedName}.png`; // Ruta del ícono
+  const normalizedName = normalizeName(name); // Normaliza el nombre
+  return `/img/${normalizedName}.png`; // Ruta del ícono
 }
 
 // Elementos del idioma
