@@ -308,7 +308,7 @@ if (searchLuckBtn) {
           ${items
             .map(
               (item) =>
-                `<td><img src="${getIcon(item)}" alt="${item}" data-tooltip="${item}" style="width: 1.5rem; height: 1.5rem;" /></td>`
+                `<td><img src="${getIcon(item)}" alt="${item}" data-tooltip="${item}"/></td>`
             )
             .join("")}
         `;

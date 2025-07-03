@@ -106,10 +106,10 @@ th {
 
 /* ===== Iconos Tabla ===== */
 #result-table img {
-  width: 1.5rem;
-  height: 1.5rem;
-  display: block;
-  margin: auto;
+  width: 40px;/* Ancho de los iconos */
+  height: 40px;/* Alto de los iconos */
+  display: block;/* Asegura que los iconos se alineen correctamente */
+  margin: auto;/* Centra los iconos en la celda */
 }
 
 @media (max-width: 472px) {
