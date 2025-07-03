@@ -157,33 +157,6 @@ const elements = [
   "Agua",
 ];
 
-// Elementos del idioma
-const languageToggle = document.getElementById("language-toggle");
-const languageMenu = document.getElementById("language-menu");
-const languageOptions = document.querySelectorAll(".language-option");
-
-// Mostrar/ocultar el menú desplegable
-languageToggle.addEventListener("click", () => {
-  const isMenuVisible = languageMenu.style.display === "block";
-  languageMenu.style.display = isMenuVisible ? "none" : "block";
-});
-
-// Cambiar idioma al seleccionar una opción
-languageOptions.forEach((option) => {
-  option.addEventListener("click", () => {
-    const selectedLang = option.getAttribute("data-lang");
-    currentBooks = selectedLang === "lat" ? booksLAT : booksES;
-    localStorage.setItem("pvpml_language", selectedLang);
-    languageMenu.style.display = "none"; // Ocultar el menú después de seleccionar
-  });
-});
-
-// Cargar preferencia guardada
-const savedLanguage = localStorage.getItem("pvpml_language");
-if (savedLanguage) {
-  currentBooks = savedLanguage === "lat" ? booksLAT : booksES;
-}
-
 let assignedOptions = [];
 const logEntries = JSON.parse(localStorage.getItem("pvpml_logs")) || [];
 
@@ -203,10 +176,7 @@ if (document.querySelector("#result-table tbody")) {
   loadResults();
 }
 
-// Guardar logs y resultados
-function saveLogs() {
-  localStorage.setItem("pvpml_logs", JSON.stringify(logEntries));
-}
+// Guardar resultados
 function saveResults() {
   const rows = Array.from(document.querySelectorAll("#result-table tbody tr"));
   const results = rows.map((row) =>

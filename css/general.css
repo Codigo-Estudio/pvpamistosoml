@@ -78,7 +78,21 @@ header {
   text-align: center;
   position: relative;
 }
-
+/* ===== Footer ===== */
+footer {
+  box-sizing: border-box;
+  width: 100vw;
+  max-width: 100%;
+  padding: 1rem;
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-style: italic;
+  background-color: var(--footer-bg);
+  margin-top: auto;
+  overflow-x: hidden;
+}
 /* ===== Menú ===== */
 #menu-container {
   position: relative;
@@ -125,16 +139,6 @@ header {
 #menu a:hover {
   background: var(--menu-link-hover);
 }
-
-/* ===== Botón de modo oscuro ===== */
-#dark-mode-toggle {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: #fff;
-  cursor: pointer;
-}
-
 /* ===== Main y controles ===== */
 main {
   flex: 1;
@@ -142,23 +146,12 @@ main {
   max-width: 1000px;
   margin: 2rem auto;
 }
-
-/* ===== Footer ===== */
-footer {
-  box-sizing: border-box;
-  width: 100vw;
-  max-width: 100%;
-  padding: 1rem;
-  text-align: center;
-  font-family: "Times New Roman", Times, serif;
-  font-size: 1.2rem;
-  font-weight: bold;
-  font-style: italic;
-  background-color: var(--footer-bg);
-  margin-top: auto;
-  overflow-x: hidden;
+/* ===== Mensajes ===== */
+.message {
+  color: red;
+  margin-top: 1rem;
+  display: none;
 }
-
 #motivational-footer {
   transition: opacity 0.5s ease-in-out;
   opacity: 1;
@@ -196,7 +189,14 @@ footer {
 .language-option:hover {
   background-color: #f0f0f0;
 }
-
+/* ===== Icono modo oscuro ===== */
+#dark-mode-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+}
 /* Contenedor de los íconos */
 #icon-container {
   display: flex;

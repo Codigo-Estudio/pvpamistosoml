@@ -1,3 +1,8 @@
+// Guardar logs
+function saveLogs() {
+  localStorage.setItem("pvpml_logs", JSON.stringify(logEntries));
+}
+
 const logList = document.getElementById("log-list");
 const logEntries = JSON.parse(localStorage.getItem("pvpml_logs")) || [];
 if (logList) {
