@@ -288,7 +288,7 @@ function normalizeName(name) {
 function getIcon(name) {
   const translatedName = bookTranslationMap[name] || name; // Traduce el nombre si está en el mapa
   const normalizedName = normalizeName(translatedName); // Normaliza el nombre traducido
-  return `/img/${normalizedName}.png`; // Ruta del ícono
+  return `/pvpamistosoml/img/${normalizedName}.png`; // Ruta del ícono
 }
 
 // Elementos del idioma
