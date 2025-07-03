@@ -5,146 +5,6 @@ const options = [
   "3 Elementos",
   "3 Libros",
 ];
-const booksES = [
-  "Mecánicos",
-  "Legiones Del Mal",
-  "Dragones",
-  "Legiones Del Bien",
-  "Espíritus",
-  "Invierno",
-  "Alados",
-  "Monstruas",
-  "No Muertos",
-  "Villanos",
-  "Aventureros",
-  "Exclusivo",
-  "Familias",
-  "Marinos",
-  "Superhéroes",
-  "Inframundo",
-  "Elementales",
-  "Zoomorfos",
-  "Portadores",
-  "Guerras De Equipo",
-  "Elite",
-  "Carrera",
-  "Misión",
-  "Moradores De Las Cimas",
-  "Reinos Libres",
-  "Festividades",
-  "Nueva Oleada",
-  "Vieja Guardia Marina",
-  "Monstelvania",
-  "Abominaciones",
-  "Civilizaciones Del Cosmos",
-  "Defensores Del Espacio",
-  "Navegantes Estelares",
-  "Gaia Pura",
-  "Corte Justa",
-  "Gremio De Los Aventureros",
-  "Guardia De Almas",
-  "Dojo De Furia",
-  "Gaia Malvada",
-  "Dojo De Honor",
-  "El Paramo",
-  "Patrulla Elektra",
-  "El Sindicato",
-  "Escuadrón Vengativo",
-  "Moradores Del Inframundo",
-  "Barbaros",
-  "Consejo Mágico",
-  "Paraíso Celestial",
-  "Ciudadanos",
-  "Saurios",
-  "Liga De Cazadores",
-  "Piratas De Petra",
-  "Cuchillas Tenebrosas",
-  "Fuerzas Ardientes",
-  "Picos Montañosos",
-  "Era Mítica Original",
-  "Era Cósmica",
-  "Era Corrupta",
-  "Era Metropolitana",
-  "Era Apocalíptica",
-  "Era Silvestre",
-  "Era Galáctica",
-  "Era Abisal",
-  "Era Multiverso",
-  "Era Alpina",
-  "Era Histórica",
-  "Era Primitiva",
-  "Era Conspiradora",
-];
-const booksLAT = [
-  "Mecánico",
-  "Legiones Malignas",
-  "Dragon",
-  "Legiones Benévolas",
-  "Espíritus",
-  "Invierno",
-  "Alado",
-  "Mujer",
-  "No Muerto",
-  "Villanos",
-  "Aventureros",
-  "Exclusivo",
-  "Familias",
-  "Mar",
-  "Superhéroes",
-  "Inframundo",
-  "Elementales",
-  "Zoomorfos",
-  "Portadores",
-  "Guerras De Equipo",
-  "Elite",
-  "Carrera",
-  "Misión",
-  "Nórdicos",
-  "Reinos Libres",
-  "Festividades",
-  "Nueva Onda",
-  "Antiguos Guardias Marinos",
-  "Monstelvania",
-  "Abominaciones",
-  "Civilizaciones Cósmicas",
-  "Defensores Espaciales",
-  "Viajeros De Las Estrellas",
-  "Gaia Pura",
-  "Corte Honesta",
-  "Gremio De Aventureros",
-  "Guarida De Almas",
-  "Dojo De Furia",
-  "Gaia Malvada",
-  "Dojo De Honor",
-  "Páramos",
-  "Patrulla De Elektra",
-  "El Sindicato",
-  "Escuadrón De Venganza",
-  "Moradores Del Inframundo",
-  "Barbaros",
-  "Consejo De Magia",
-  "Paraíso Celestial",
-  "Ciudadanos",
-  "Saurianos",
-  "Liga De Cazadores",
-  "Piratas De Petra",
-  "Cuchillas Oscuras",
-  "Fuerzas Ardientes",
-  "Cimas Rocosas",
-  "Era Mítica Original",
-  "Era Cósmica",
-  "Era Corrupta",
-  "Era Metropolitana",
-  "Era Del Juicio Final",
-  "Era Silvestre",
-  "Era Galáctica",
-  "Era Abisal",
-  "Era Multiverso",
-  "Era Alpina",
-  "Era Histórica",
-  "Era Feral",
-  "Era Conspirativa",
-];
 const elements = [
   "Fuego",
   "Natura",
@@ -157,7 +17,79 @@ const elements = [
   "Agua",
 ];
 
+const bookTranslationMap = {
+  "Mecánico": "Mecánicos",
+  "Legiones Malignas": "Legiones Del Mal",
+  "Dragon": "Dragones",
+  "Legiones Benévolas": "Legiones Del Bien",
+  "Espíritus": "Espíritus",
+  "Invierno": "Invierno",
+  "Alado": "Alados",
+  "Mujer": "Monstruas",
+  "No Muerto": "No Muertos",
+  "Villanos": "Villanos",
+  "Aventureros": "Aventureros",
+  "Exclusivo": "Exclusivo",
+  "Familias": "Familias",
+  "Mar": "Marinos",
+  "Superhéroes": "Superhéroes",
+  "Inframundo": "Inframundo",
+  "Elementales": "Elementales",
+  "Zoomorfos": "Zoomorfos",
+  "Portadores": "Portadores",
+  "Guerras De Equipo": "Guerras De Equipo",
+  "Elite": "Elite",
+  "Carrera": "Carrera",
+  "Misión": "Misión",
+  "Nórdicos": "Moradores De Las Cimas",
+  "Reinos Libres": "Reinos Libres",
+  "Festividades": "Festividades",
+  "Nueva Onda": "Nueva Oleada",
+  "Antiguos Guardias Marinos": "Vieja Guardia Marina",
+  "Monstelvania": "Monstelvania",
+  "Abominaciones": "Abominaciones",
+  "Civilizaciones Cósmicas": "Civilizaciones Del Cosmos",
+  "Defensores Espaciales": "Defensores Del Espacio",
+  "Viajeros De Las Estrellas": "Navegantes Estelares",
+  "Gaia Pura": "Gaia Pura",
+  "Corte Honesta": "Corte Justa",
+  "Gremio De Aventureros": "Gremio De Los Aventureros",
+  "Guarida De Almas": "Guardia De Almas",
+  "Dojo De Furia": "Dojo De Furia",
+  "Gaia Malvada": "Gaia Malvada",
+  "Dojo De Honor": "Dojo De Honor",
+  "Páramos": "El Paramo",
+  "Patrulla De Elektra": "Patrulla Elektra",
+  "El Sindicato": "El Sindicato",
+  "Escuadrón De Venganza": "Escuadrón Vengativo",
+  "Moradores Del Inframundo": "Moradores Del Inframundo",
+  "Barbaros": "Barbaros",
+  "Consejo De Magia": "Consejo Mágico",
+  "Paraíso Celestial": "Paraíso Celestial",
+  "Ciudadanos": "Ciudadanos",
+  "Saurianos": "Saurios",
+  "Liga De Cazadores": "Liga De Cazadores",
+  "Piratas De Petra": "Piratas De Petra",
+  "Cuchillas Oscuras": "Cuchillas Tenebrosas",
+  "Fuerzas Ardientes": "Fuerzas Ardientes",
+  "Cimas Rocosas": "Picos Montañosos",
+  "Era Mítica Original": "Era Mítica Original",
+  "Era Cósmica": "Era Cósmica",
+  "Era Corrupta": "Era Corrupta",
+  "Era Metropolitana": "Era Metropolitana",
+  "Era Del Juicio Final": "Era Apocalíptica",
+  "Era Silvestre": "Era Silvestre",
+  "Era Galáctica": "Era Galáctica",
+  "Era Abisal": "Era Abisal",
+  "Era Multiverso": "Era Multiverso",
+  "Era Alpina": "Era Alpina",
+  "Era Histórica": "Era Histórica",
+  "Era Feral": "Era Primitiva",
+  "Era Conspirativa": "Era Conspiradora",
+};
+
 let assignedOptions = [];
+let currentTooltip = null; // Variable para almacenar el tooltip actual
 
 // Cargar resultados previos
 function loadResults() {
@@ -306,12 +238,13 @@ if (searchLuckBtn) {
           <td>${username}</td>
           <td>${selectedOption}</td>
           ${items
-            .map(
-              (item) =>
-                `<td>
-                  <img src="${getIcon(item)}" alt="${item}" data-tooltip="${item}"/>
-                </td>`
-            )
+            .map((item) => {
+              const iconPath = getIcon(item); // Obtiene la ruta del ícono
+              console.log(`Resultado: ${item}, Imagen: ${iconPath}`); // Imprime el resultado y la ruta de la imagen
+              return `<td>
+                <img src="${iconPath}" alt="${item}" data-tooltip="${item}"/>
+              </td>`;
+            })
             .join("")}
         `;
         resultTable.appendChild(row);
@@ -349,12 +282,12 @@ function getRandom(arr, n) {
 function normalizeName(name) {
   return name
     .toLowerCase() // Convierte a minúsculas
-    .replace(/[\s\W]+/g, "_"); // Reemplaza espacios y caracteres no alfanuméricos por guiones bajos
 }
 
 // Función para obtener la ruta del ícono correspondiente
 function getIcon(name) {
-  const normalizedName = normalizeName(name); // Normaliza el nombre
+  const translatedName = bookTranslationMap[name] || name; // Traduce el nombre si está en el mapa
+  const normalizedName = normalizeName(translatedName); // Normaliza el nombre traducido
   return `/img/${normalizedName}.png`; // Ruta del ícono
 }
 
@@ -381,7 +314,7 @@ document.addEventListener("click", (e) => {
 languageOptions.forEach((option) => {
   option.addEventListener("click", () => {
     const selectedLang = option.getAttribute("data-lang");
-    currentBooks = selectedLang === "lat" ? booksLAT : booksES;
+    currentBooks = Object.keys(bookTranslationMap); // Usa las claves del mapa como lista de libros
     localStorage.setItem("pvpml_language", selectedLang);
     languageMenu.style.display = "none"; // Ocultar el menú después de seleccionar
   });
@@ -390,15 +323,27 @@ languageOptions.forEach((option) => {
 // Cargar preferencia guardada
 const savedLanguage = localStorage.getItem("pvpml_language");
 if (savedLanguage) {
-  currentBooks = savedLanguage === "lat" ? booksLAT : booksES;
+  currentBooks = Object.keys(bookTranslationMap); // Usa las claves del mapa como lista de libros
 }
 
 document.addEventListener("click", (e) => {
   const target = e.target;
-  if (target.tagName === "IMG" && target.hasAttribute("data-tooltip")) {
-    const tooltipText = target.getAttribute("data-tooltip");
 
-    // Crear el tooltip
+  // Verifica si el clic es sobre un ícono con tooltip
+  if (target.tagName === "IMG" && target.hasAttribute("data-tooltip")) {
+    const originalName = target.getAttribute("data-tooltip");
+    const tooltipText =
+      localStorage.getItem("pvpml_language") === "lat"
+        ? originalName // Muestra el nombre en Latino
+        : bookTranslationMap[originalName] || originalName; // Traduce al Español si es necesario
+
+    // Eliminar el tooltip actual si existe
+    if (currentTooltip) {
+      currentTooltip.remove();
+      currentTooltip = null;
+    }
+
+    // Crear el nuevo tooltip
     const tooltip = document.createElement("div");
     tooltip.textContent = tooltipText;
     tooltip.style.position = "absolute";
@@ -422,12 +367,18 @@ document.addEventListener("click", (e) => {
       tooltip.style.opacity = "1";
     }, 10);
 
+    // Guardar la referencia al tooltip actual
+    currentTooltip = tooltip;
+
     // Desvanecer y eliminar el tooltip después de unos segundos
     setTimeout(() => {
-      tooltip.style.opacity = "0";
-      setTimeout(() => {
-        tooltip.remove();
-      }, 300); // Tiempo para que desaparezca completamente
+      if (currentTooltip === tooltip) { // Verifica que el tooltip actual sea el mismo
+        tooltip.style.opacity = "0";
+        setTimeout(() => {
+          tooltip.remove();
+          currentTooltip = null; // Limpiar la referencia al tooltip
+        }, 300); // Tiempo para que desaparezca completamente
+      }
     }, 2000); // Tiempo que el tooltip permanece visible
   }
 });
