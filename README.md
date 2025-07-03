@@ -1,29 +1,27 @@
 # Mi Página Web
 
-Este proyecto es una página web sencilla que utiliza HTML, CSS y JavaScript. A continuación se detalla la estructura de archivos y su propósito.
+Este proyecto es una página web sencilla y moderna que utiliza HTML, CSS y JavaScript. La estructura está organizada para separar los estilos y scripts generales de los específicos de la página principal, facilitando el mantenimiento y la escalabilidad.
 
 ## Estructura de Archivos
 
 ```
-mi-pagina-web
-├── index.html        # Página principal de la web
-├── css
-│   └── estilos.css   # Estilos CSS para la página
-├── js
-│   └── script.js     # Código JavaScript para interactividad
-└── README.md         # Documentación del proyecto
+├── index.html           # Página principal
+├── css/
+│   ├── general.css      # Estilos compartidos (header, menú, footer, modo oscuro, etc.)
+│   └── index.css        # Estilos exclusivos de la página principal
+├── js/
+│   ├── general.js       # Scripts compartidos (menú, modo oscuro, footer, etc.)
+│   └── index.js         # Scripts exclusivos de la página principal
+├── img/
+│   └── *.png            # Imágenes utilizadas en la web
+└── README.md            # Documentación del proyecto
 ```
 
 ## Descripción de Archivos
 
-- **index.html**: Este archivo es la página principal de la web. Contiene la estructura básica del HTML y enlaza los archivos de CSS y JavaScript para aplicar estilos y funcionalidades.
-
-- **css/estilos.css**: Este archivo contiene los estilos CSS que se aplican a la página web. Aquí se definen las reglas de estilo para los elementos HTML, como colores, fuentes, márgenes, etc.
-
-- **js/script.js**: Este archivo contiene el código JavaScript que añade interactividad a la página web. Aquí se pueden definir funciones, manejar eventos y manipular el DOM.
-
-## Instalación
-
-1. Clona este repositorio en tu máquina local.
-2. Abre el archivo `index.html` en tu navegador para ver la página web en acción.
-3. Se podra abrir en la página tanto desde un dispositivo movil como en un pc.
+- **index.html**: Página principal de la web. Contiene la estructura básica y enlaza los archivos de estilos y scripts necesarios para la funcionalidad principal.
+- **css/general.css**: Estilos globales y compartidos (header, menú, footer, modo claro/oscuro, etc.).
+- **css/index.css**: Estilos exclusivos para la página principal.
+- **js/general.js**: Scripts globales y compartidos (menú lateral, modo oscuro, footer motivacional, etc.).
+- **js/index.js**: Scripts exclusivos para la página principal (validaciones, generación de resultados, almacenamiento local, etc.).
+- **img/**: Carpeta con todas las imágenes utilizadas en la web.
